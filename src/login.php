@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\Choise
 
 class UtilisateurType extends AbstractType
 {
@@ -16,9 +17,9 @@ class UtilisateurType extends AbstractType
     {
         $builder
             
-            ->add('email', TextareaType::class)
+        ->add('email', Type::class)
             ->add('mot_passe', TextType::class)
-            ->add('pseudo', TextType::class)
+          
             
             ]);
         ;

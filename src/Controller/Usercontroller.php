@@ -1,46 +1,41 @@
 <?php
-
-namespace App\Controller;
-
-use App\Entity\UserType;
-use App\Entity\Classutilisateur;
+use Symfony\Component\HttpFoundation\Request;
+use Entity\Utilisateur;
+use Form\UtilisateurType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Response;
+namespace AppBundle\Controller;
 
-class RegistrationController extends Controller
+
+class UserController extends Controller
 {
-    /**
-     * @Route("/register", name="user_registration")
+    public function addaction(){
+      /**
+     * @Route("/add", name="inscription")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    {
-        // 1) build the form
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-
-        // 2) handle the submit (will only happen on POST)
+        $user=new Utilisateur();
+        $form =$this ->createform(UtilisateurType::class, $user);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
+            $em = $this->getDoctrine()->getManager();
 
-            // 4) save the User!
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $em->persist($user);
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
+            $em->flush();
 
-            return $this->redirectToRoute('user_registration');
+            return new Response("L'utilisateur à bien été créer.");
         }
 
-        return $this->render(
-            
-        );
+        $Formview=$form->createView();
+        return $this->render("inscription.html.twig"),array?
     }
+
 }

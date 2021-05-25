@@ -15,17 +15,23 @@ class UtilisateurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',TextType::class )
-            ->add('email', TextareaType::class)
-            ->add('categorie', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('mot_passe', TextType::class)
-            ->add('pseudo', TextType::class)
+            ->add('nom',TextType::class, 'attr' => array(
+                'placeholder' => 'Nom '
+                ) )
+            ->add('email', TextareaType::class 'attr' => array(
+                'placeholder' => 'Nom ' )
+            ->add('prenom', TextType::class 'attr' => array(
+                'placeholder' => 'Prenom ')
+            ->add('mot_passe', TextType::class 'attr' => array(
+                'placeholder' => 'mot_passe ')
+            ->add('pseudo', TextType::class 'attr' => array(
+                'placeholder' => 'pseudo ')
             ->add('Genre', ChoiceType::class, [
                 'choices'  => [
                     'Mr' => 'Homme',
                     'M' => 'Femme',
-                ],
+                ],'attr' => array(
+                    'placeholder' => 'Genre '
             ]);
         ;
     }

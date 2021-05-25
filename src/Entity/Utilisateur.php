@@ -8,24 +8,60 @@ use Doctrine\ORM\Mapping as ORM;
 
 class utilisateur 
 {
-  
+   /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
    
     private $id;
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50)
      */
     private $nom;
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=50)
+     */
+    
     private $prenom;
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="pseudo", type="string", length=50)
+     */
     private $pseudo;
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50)
+     */
     private $email;
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=50)
+     */
     
 private $password;
+ /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", length=50)
+     */
     private $gender;
+     /**
+     * @var int
+     *
+     * @ORM\Column(name="role", type="int")
+     */
     private $role;
-    private $categories;
-
+    
     
 
     public function getEmail()
