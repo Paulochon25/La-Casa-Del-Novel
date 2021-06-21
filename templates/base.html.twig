@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}La Casa Del Novel{% endblock %}</title>
+        <body>
+        {% block body %}
+            <a href="{{ path('home') }}">
+                <img id="logo" src="{{ asset('build/img/logo_large.png') }}" alt="livre">
+            </a>
+
+            <div id="connexion" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div id='modal-header'>
+                        <span class="login">LOGIN</span>
+                        <span class="close close-logind">&times;</span>
+                    </div>
+                    <div id="modal-body">
+                        <label class="label-login" for="pseudo-login">Pseudo</label><br/>
+                        <input class="input" id="pseudo-login" type="text"><br/>
+
+                        <label class="label-login" for="pseudo-login">Mot de passe</label><br/>
+                        <input class="input" id="password-login"type="password">
+                    </div>
+                    <div id="modal-foot">
+                        <p id="to-register" class="link-modal sign-in" style="margin-left: 1%;">Inscription</p>
+                        <p class="link-modal sign-in"> | </p>
+                        <p id="to-password-forgot" class="link-modal sign-in">Mot de passe oublié</p>
+                        <input type="submit" id="btn-login" class="link-modal" value="Connexion">
+                    </div>
+                </div>
+
+            </div>
+            <div id="inscription" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-register-content">
+                    <div id='modal-header'>
+                        <span class="login register">REGISTER</span>
+                        <span class="close close-register">&times;</span>
+                    </div>
+                    <div id="modal-body">
+                        <label class="label-login" for="pseudo-login">Pseudo</label><br/>
+                        <input class="input" id="pseudo-login" type="text"><br/>
+
+                        <label class="label-login" for="password">Mot de passe</label><br/>
+                        <input class="input" id="password" type="password">
+
+                        <label class="label-login" for="repeat-password">Répétez le mot de passe</label><br/>
+                        <input class="input" id="repeat-password" type="password">
+
+                        <label class="label-login" for="mail">E-mail</label><br/>
+                        <input class="input" id="mail" type="mail">
+
+                        <label class="label-login" for="type">Type de profil (Lecteur ou Traducteur)</label><br/>
+                        <select class="input" id="type">
+                            <option value="reader">Lecteur</option>
+                            <option value="traductor">Traducteur</option>
+                        </select>
+
+                        <input type="submit" id="btn-register" value="Inscription">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        <section id="block">
+
+                <section id="header">
+                    <a href="{{ path('LN') }}" class="menu-title">Novels</a>
+{#                    <a href="#" class="menu-title">Suggestions</a> FORUM #}
+                    <a href="{{ path('translators') }}" class="menu-title">Traducteurs</a>
+                    <a href="{{ path('forum') }}" class="menu-title">Forum</a>
+                    <a href="#" id="espace-membre" class="menu-title">Espace Membre</a>
+                </section>
+        {% endblock %}
+
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <script>
+                let loginModal = document.getElementById("connexion");
+                let signInModal = document.getElementById('inscription');
+
+                let toLogin = document.getElementById("espace-membre");
+                let toSignIn = document.getElementById('to-register');
+
+                let span = document.getElementsByClassName("close-login")[0];
+                let span2 = document.getElementsByClassName("close-register")[0];
+
+
+                toLogin.onclick = function() {
+                    loginModal.style.display = "block";
+                }
+                toSignIn.onclick = function() {
+                    signInModal.style.display = "block";
+
+                }
+
+                span.onclick = function() {
+                    loginModal.style.display = "none";
+                }
+                span2.onclick = function() {
+                    signInModal.style.display = "none";
+                }
+
+
+                window.onclick = function(event) {
+                    if (event.target == loginModal) {
+                        loginModal.style.display = "none";
+                    }
+                    if (event.target == signInModal) {
+                        signInModal.style.display = "none";
+                    }
+
+                }
+            </script>
+        {% endblock %}
+    </head>
+</html>
