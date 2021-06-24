@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Nouvel Discusion{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    
+</head>
+<body>
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <input p>
+    {{ form_widget(form) }}
+    <li><a href="">Discusion</a></li>
+  <li><a href="mailto:m.bluth@example.com">Vote</a></li>
+  <li><a href="tel:+123456789">Recrutement</a></li>
+    {{ form_end(form) }}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

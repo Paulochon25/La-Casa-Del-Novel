@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Nouvel Discusion{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    
+</head>
+<body>
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <input><input>
+    {{ form_widget(form) }}
+    
+    <button type="submit">S'inscrire</button>
+    {{ form_end(form) }}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
