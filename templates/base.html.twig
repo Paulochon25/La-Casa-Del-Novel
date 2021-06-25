@@ -60,7 +60,7 @@
                             <option value="traductor">Traducteur</option>
                         </select>
 
-                        <a href="{{ path('register') }}"><input type="submit" id="btn-register" value="Inscription"></a>
+                        <a href="#"><input type="submit" id="btn-register" value="Inscription"></a>
 
                     </div>
 
@@ -76,7 +76,8 @@
 {#                    <a href="#" class="menu-title">Suggestions</a> FORUM #}
                     <a href="{{ path('translators') }}" class="menu-title">Traducteurs</a>
                     <a href="{{ path('forum') }}" class="menu-title mar-right">Forum</a>
-                    <a href="#" id="espace-membre" class="menu-title">Espace Membre</a>
+                    <a href="{{ path('app_register') }}" class="menu-title">Inscription</a>
+                    <a href="#" class="menu-title">Connexion</a>
                 </section>
         {% endblock %}
 
