@@ -3,35 +3,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Entity\Discusion;
 
-class DefaultController extends AbstractController
+class DiscusionuserControlleur extends AbstractController
 {
-    /**
-     * @Route("/default", name="default")
-     */
-    public function findAllsujetdiscusion(int $price): array
+    public function findAllsujetdiscusion(int $id): array
     {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-            SELECT * FROM discusion 
-            
-            ';
-        $discusiont = $conn->prepare($sql);
-        $discusio ->execute(['price' => $price]);
-
-        return $this->render('articles/index.html.twig', [
-    'articles' => $discusion,
+        $discusion=$this->getDoctrine()->getRepository(Discusion::class)->find($id);
+        return $discusion;
     }
     public function creationdiscusion(int $price): array
     {
         $conn = $this->getEntityManager()->getConnection();
-        $date= date(Y-m-d H:i:s);
-        $discusion=new Discusion();
-        $discusion.sujet=setsujet($sujet);
+        $date23= date(Y-m-d H:i:s);
+        $entityManager=$this->getDoctrine()->getManager();
 
-        $sql = '
-        $sql = "INSERT INTO Clients(Nom,Prenom,Adresse,Ville,Codepostal,Pays,Mail)
-                        VALUES('Giraud','Pierre','Quai d\'Europe','Toulon',83000,'France','pierre.giraud@edhec.com')";
+        $discusion1=new Discusion();
+        $discusion1->setTitle($data['title']);
+        $discusion1->setContent($data['content']);
+        $discusion1->setAuthor($data['author']);
+        $discusion->setDate_creation(date23);
+        $entityManager->persist($discusion1);
+        $entityManager->flush();
+
+        $requete=$this->bdd->prepare("INSERT INTO discuson(sujet,date-création,detail,actif) VALUES (new_sujet,new_date,new_detail,new_acitf)");
+        $requete->execute(array 'new_sujet'=>$this->$discusion.sujet,'new-date'=>$this->$date)
             
             ';
         $discusiont = $conn->prepare($sql);
@@ -40,4 +34,15 @@ class DefaultController extends AbstractController
         return $this->render('articles/index.html.twig', [
     'articles' => $discusion,
     }
+    
+    public function Alliscusion(int $price): array
+    
+    {
+ $entityManager = $this->getEntityManager();
+
+ $discusion = $this->getDoctrine()->getRepository(Discusion::class);
+
+return $this->render('Discusion/alldiscusion.html.twig', [
+    'controller_name' => 'ArticlesController',
+]);
 }

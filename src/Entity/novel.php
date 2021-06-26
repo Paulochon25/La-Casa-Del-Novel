@@ -48,14 +48,9 @@ class novel
     private $nbchapitre;
      
     
-    public function getEmail()
+    public function getid()
     {
-        return $this->email;
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
+        return $this->id;
     }
 
     public function getNom()
@@ -68,59 +63,24 @@ class novel
         $this->nom = $nom;
     }
 
-    public function getPrenom()
+    public function getAuteur()
     {
-        return $this->prenom;
+        return $this->auteur;
     }
 
-    public function setPrenom($prenom)
+    public function setauteur($auteeur)
     {
-        $this->prenom = $prenom;
+        $this->auteur = $auteeur;
     }
-    public function getPseudo()
+    public function getnbchapitre()
     {
-        return $this-> pseudo;;
-    }
-
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = $pseudo;
+        return $this-> nbchapitre;;
     }
 
-    public function getPassword()
+    public function stNbchapitre($nbchapitre)
     {
-        return $this-> pseudo;;
+        $this->nbchapitre = $nbchapitre;
     }
-
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    public function getSalt()
-    {
-        // The bcrypt and argon2i algorithms don't require a separate salt.
-        // You *may* need a real salt if you choose a different encoder.
-        return null;
-    }
-
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-    public function setRole($role)
-    {
-        $this->role = $role;
-    }
-    public function getGender()
-    {
-        return $this->gender;
-    }
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-    }
-
 
 
 }

@@ -7,13 +7,21 @@ class Discusion extends AbstractController
 {
     public function findAllsujetdiscusion(int $id): array
     {
-        $discusion=$this->getDoctrine()->getRepository(Discusion::class)->find($id);
+        $discusion=$this->getDoctrine()->getRepository(Discusiondiscussion_user::class)->find($id);
         return $discusion;
     }
     public function showdiscusion(int $id): Response
     {
         $discusion = $this->getDoctrine()
-            ->getRepositoryDiscusion(::class)
+            ->getRepository(Discusion::class)
+            ->find($id);
+
+            return $discusion;
+        }
+        public function showuser(int $id): Response
+    {
+        $discusion = $this->getDoctrine()
+            ->getRepository(Utilisateur::class)
             ->find($id);
 
             return $discusion;
@@ -23,34 +31,29 @@ class Discusion extends AbstractController
 
         $conn = $this->getEntityManager()->getConnection();
         $entityManager=$this->getDoctrine()->getManager();
-$discusion3=showdiscusion($discusion);
-        $discusion1=discussion_user();
-        $discusion1->setTitle($data['title']);
-        $discusion1->setContent($data['content']);
+$discusion3=showdiscusion($discusion.id);
+$user3=showuser(1);
+$discusionuser=new discussion_user();
+        $discusionuser->setDiscusion($data[$discusion3]);
+        $discusion1->setuser(user3);
         $discusion1->setAuthor($data['author']);
         $discusion->setDate_creation(date23);
         $entityManager->persist($discusion1);
         $entityManager->flush();
 
-        $requete=$this->bdd->prepare("INSERT INTO discuson(sujet,date-création,detail,actif) VALUES (new_sujet,new_date,new_detail,new_acitf)");
-        $requete->execute(array 'new_sujet'=>$this->$discusion.sujet,'new-date'=>$this->$date)
-            
-            ';
-        $discusiont = $conn->prepare($sql);
-        $discusio ->execute(['price' => $price]);
 
         return $this->render('articles/index.html.twig', [
     'articles' => $discusion,
     }
     
-    public function Alliscusion(int $price): array
+    public function AlldiscusionUSER(): array
     
     {
  $entityManager = $this->getEntityManager();
 
- $discusion = $this->getDoctrine()->getRepository(Discusion::class);
+ $discusion = $this->getDoctrine()->getRepository(discussion_user::class);
 
-return $this->render('Discusion/alldiscusion.html.twig', [
+return $this->render('Discusion/discusionuser.html.twig', [
     'controller_name' => 'ArticlesController',
 ]);
 }
