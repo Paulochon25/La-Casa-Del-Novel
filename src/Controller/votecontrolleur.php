@@ -3,54 +3,60 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Entity\Discusion;
 
-class Discusion extends AbstractController
+class Vote extends AbstractController
 {
     public function findAllsujetdiscusion(int $id): array
     {
-        $discusion=$this->getDoctrine()->getRepository(Discusion::class)->find($id);
-        return $discusion;
+        $vote=$this->getDoctrine()->getRepository(Vote::class)->find($id);
+        return $vote;
     }
-    public function showdiscusion(int $id): Response
+    public function showuser(int $id): Response
     {
         $discusion = $this->getDoctrine()
-            ->getRepositoryDiscusion(::class)
+            ->getRepository(Utilisateur::class)
             ->find($id);
 
             return $discusion;
         }
+        public function shownovel(int $id): Response
+    {
+        $discusion = $this->getDoctrine()
+            ->getRepository(novel::class)
+            ->find($id);
+
+            return $discusion;
+        }
+   
     public function creationdiscusion(int $price): array
     {
 
         $conn = $this->getEntityManager()->getConnection();
         $entityManager=$this->getDoctrine()->getManager();
-$discusion3=showdiscusion($discusion);
-        $discusion1=discussion_user();
-        $discusion1->setTitle($data['title']);
-        $discusion1->setContent($data['content']);
-        $discusion1->setAuthor($data['author']);
+$novel=shownovel($novel);
+$date23=date();
+$user=showuser(1),
+        $vote=vote();
+        $vote->setutilisateur($user);
+        $discusion1->setnovel($novel);
+        $discusion1->settdatevote($vote)->getdata();
         $discusion->setDate_creation(date23);
-        $entityManager->persist($discusion1);
+        $discusion->setcontenu($contenu)->getdata();
+        $entityManager->persist(reponse);
         $entityManager->flush();
 
-        $requete=$this->bdd->prepare("INSERT INTO discuson(sujet,date-création,detail,actif) VALUES (new_sujet,new_date,new_detail,new_acitf)");
-        $requete->execute(array 'new_sujet'=>$this->$discusion.sujet,'new-date'=>$this->$date)
-            
-            ';
-        $discusiont = $conn->prepare($sql);
-        $discusio ->execute(['price' => $price]);
 
-        return $this->render('articles/index.html.twig', [
+        return $this->render('articles/reponse.html.twig', [
     'articles' => $discusion,
     }
     
-    public function Alliscusion(int $price): array
+    public function Allreponse(int $price): array
     
     {
  $entityManager = $this->getEntityManager();
 
- $discusion = $this->getDoctrine()->getRepository(Discusion::class);
+ $discusion = $this->getDoctrine()->getRepository(vote::class);
 
-return $this->render('Discusion/alldiscusion.html.twig', [
-    'controller_name' => 'ArticlesController',
+return $this->render('Discusion/allvote.html.twig', [
+    'controller_name' => 'voteController',
 ]);
 }

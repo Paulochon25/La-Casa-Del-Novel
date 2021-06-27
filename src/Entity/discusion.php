@@ -20,78 +20,57 @@ class discusion
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=50)
+     * @ORM\Column(name="sujet", type="string", length=50)
      */
     private $sujet;
      /**
-     * @var string
+     * @var Date
      *
-     * @ORM\Column(name="prenom", type="string", length=50)
+     * @ORM\Column(name="date-création", type="date")
      */
     
-    private $prenom;
+    private $date_création;
      /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=50)
+     * @ORM\Column(name="detail", type="string", length=50)
      */
-    private $pseudo;
+    private $detail;
      /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=50)
+     * @ORM\Column(name="actif", type="tinyint", length=1)
      */
-    private $email;
-     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=50)
-     */
+    private $actif;
     
-private $password;
- /**
-     * @var string
-     *
-     * @ORM\Column(name="gender", type="string", length=50)
-     */
-    private $gender;
-     /**
-     * @var int
-     *
-     * @ORM\Column(name="role", type="int")
-     */
-    private $role;
-    
-    
-
-    public function getEmail()
+    public function getsujet()
     {
-        return $this->email;
+        return $this->sujet;
     }
 
-    public function setEmail($email)
+    public function setsujet($sujet)
     {
-        $this->email = $email;
+        $this->sujet = $sujet;
     }
 
-    public function getNom()
+    public function getdate_création()
     {
-        return $this->$nom;
+        return $this->$date_création;
     }
 
-    public function setNom($nom)
+    public function setdate_création($date_création)
     {
-        $this->nom = $nom;
+        $this->date_création = $date_création;
     }
 
-    public function getPrenom()
+    public function getactif()
     {
-        return $this->prenom;
+        return $this->actif;
     }
 
-    public function setPrenom($prenom)
+    public function setactif($actif)
     {
-        $this->prenom = $prenom;
+        $this->actif = $actif;
     }
     public function getPseudo()
     {

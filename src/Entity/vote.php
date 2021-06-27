@@ -14,27 +14,23 @@ class Vote
    
     private $utilisateur;
      /**
-   * @ORM\OneToOne(targetEntity="Sdz\BlogBundle\Entity\discusion", cascade={"persist"})
+   * @ORM\OneToOne(targetEntity="Sdz\BlogBundle\Entity\novel", cascade={"persist"})
    */
     private $novel;
      /**
-     * @var string
+     * @var Date
      *
-     * @ORM\Column(name="date_post", type="date")
+     * @ORM\Column(name="date_vote", type="date")
      */
     
     private $date_vote;
      /**
-     * @var /Text
+     * @var int
      *
-     * @ORM\Column(name="Contenu", type="text")
+     * @ORM\Column(name="note", type="int")
      */
     private $note;
-    /**
-     * @var /Text
-     *
-     * @ORM\Column(name="Contenu", type="text")
-     */
+    =
     
     
 
@@ -48,43 +44,40 @@ class Vote
      */
     public function getutilisateur()
     {
-      return $this->discusion;
+      return $this->utilisateur;
     }
-    public function setdiscusion(\Sdz\BlogBundle\Entity\discusion $discusion = null)
+    public function setnovel(\Sdz\BlogBundle\Entity\novel $novel = null)
     {
-      $this->image = $discusion;
+      $this->image = $novel;
     }
     /**
-     * @return Sdz\BlogBundle\Entity\discusion
+     * @return Sdz\BlogBundle\Entity\novel
      */
-    public function getdiscusion()
+    public function getnovel()
     {
-      return $this->discusion;
+      return $this->novel;
     }
-    public function getid()
+    public function getdate_vote()
     {
-        return $this->email;
-    }
-
-
-    public function getdiscusion()
-    {
-        return $this->$nom;
+        return $this->date_vote;
     }
 
-    public function settdiscusion($nom)
+
+    
+
+    public function settdatevote($date_vote)
     {
-        $this->nom = $nom;
+        $this->nom = $date_vote;
     }
 
-    public function getdate_post()
+    public function getnote()
     {
-        return $this->date_post;
+        return $this->note;
     }
 
     public function setContenu($Contenu)
     {
-        $this->prenom = $Contenu;
+        $this->Contenu = $Contenu;
     }
     public function getContenu()
     {
@@ -93,14 +86,3 @@ class Vote
 
     
 }
-
-
-id_user Index	int(11)			Non	Aucun(e)			Modifier Modifier	Supprimer Supprimer	
-Plus Plus
-	2	id_novel Index	int(11)			Non	Aucun(e)			Modifier Modifier	Supprimer Supprimer	
-Plus Plus
-	3	commentaire	int(11)			Non	Aucun(e)			Modifier Modifier	Supprimer Supprimer	
-Plus Plus
-	4	date_vote	int(11)			Non	Aucun(e)			Modifier Modifier	Supprimer Supprimer	
-Plus Plus
-	5	note

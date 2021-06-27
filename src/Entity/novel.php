@@ -30,20 +30,20 @@ class novel
      /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=50)
+     * @ORM\Column(name="contenu", type="string", length=50)
      */
     
     private $contenu;
      /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=50)
+     * @ORM\Column(name="auteeur", type="string", length=50)
      */
     private $auteeur;
      /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="email", type="string", length=50)
+     * @ORM\Column(name="nbchapitre", type="int", length=50)
      */
     private $nbchapitre;
      
@@ -77,7 +77,7 @@ class novel
         return $this-> nbchapitre;;
     }
 
-    public function stNbchapitre($nbchapitre)
+    public function setNbchapitre($nbchapitre)
     {
         $this->nbchapitre = $nbchapitre;
     }

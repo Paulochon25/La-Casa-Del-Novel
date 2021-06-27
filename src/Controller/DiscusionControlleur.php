@@ -10,17 +10,17 @@ class DiscusionuserControlleur extends AbstractController
         $discusion=$this->getDoctrine()->getRepository(Discusion::class)->find($id);
         return $discusion;
     }
-    public function creationdiscusion(int $price): array
+    public function creationdiscusion()
     {
         $conn = $this->getEntityManager()->getConnection();
         $date23= date(Y-m-d H:i:s);
         $entityManager=$this->getDoctrine()->getManager();
 
         $discusion1=new Discusion();
-        $discusion1->setTitle($data['title']);
-        $discusion1->setContent($data['content']);
-        $discusion1->setAuthor($data['author']);
-        $discusion->setDate_creation(date23);
+        $discusion1->setsujet(sujet)->getdata();
+        $discusion1->setdetail($data['detail'])->getdata();
+        $discusion1->setdate_création(['date23']);
+        $discusion->setactif(1);
         $entityManager->persist($discusion1);
         $entityManager->flush();
 
@@ -31,7 +31,7 @@ class DiscusionuserControlleur extends AbstractController
         $discusiont = $conn->prepare($sql);
         $discusio ->execute(['price' => $price]);
 
-        return $this->render('articles/index.html.twig', [
+        return $this->render('articles/DIscusion.html.twig', [
     'articles' => $discusion,
     }
     
@@ -43,6 +43,6 @@ class DiscusionuserControlleur extends AbstractController
  $discusion = $this->getDoctrine()->getRepository(Discusion::class);
 
 return $this->render('Discusion/alldiscusion.html.twig', [
-    'controller_name' => 'ArticlesController',
+    'controller_name' => 'DiscusionController',
 ]);
 }

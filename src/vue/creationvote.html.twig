@@ -13,8 +13,10 @@
     {{ form_start(form) }}
     <input><input>
     {{ form_widget(form) }}
+    <input name="commentaire"><input>
+    <input name="note"><input>
     
-    <button type="submit">S'inscrire</button>
+    <button type="submit" onpress="creationvote">S'inscrire</button>
     {{ form_end(form) }}{% endblock %}
 {% block javascripts %}{% endblock %}
 </body>

@@ -19,120 +19,72 @@ class recrutement
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=50)
+     * @ORM\Column(name="titre_annonce", type="string", length=50)
      */
     private $titre_annonce;
      /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=50)
+     * @ORM\Column(name="contenu", type="string", length=50)
      */
     
     private $contenu;
      /**
      * @var Date
      *
-     * @ORM\Column(name="pseudo", type="string", length=50)
+     * @ORM\Column(name="date_en_ligne", type="date")
      */
     private $date_en_ligne;
      /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=50)
+     * @ORM\OneToOne(targetEntity="Sdz\BlogBundle\Entity\Utilisateur", cascade={"persist"})
      */
     private $Utilisateur;
      
     
-private $password;
- /**
-     * @var string
-     *
-     * @ORM\Column(name="gender", type="string", length=50)
-     */
-    private $gender;
-     /**
-     * @var int
-     *
-     * @ORM\Column(name="role", type="int")
-     */
-    private $role;
-    
-    
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    public function getNom()
-    {
-        return $this->$nom;
-    }
-
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    }
-
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-    }
-    public function getPseudo()
-    {
-        return $this-> pseudo;;
-    }
-
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = $pseudo;
-    }
-
-    public function getPassword()
-    {
-        return $this-> pseudo;;
-    }
-
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    public function getSalt()
-    {
-        // The bcrypt and argon2i algorithms don't require a separate salt.
-        // You *may* need a real salt if you choose a different encoder.
-        return null;
-    }
-
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-    public function setRole($role)
-    {
-        $this->role = $role;
-    }
-    public function getGender()
-    {
-        return $this->gender;
-    }
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-    }
 
 
+    public function gettitre_annonce()
+    {
+        return $this->titre_annonce;
+    }
+
+    public function settitre_annonce($titre_annonce)
+    {
+        $this->titre_annonce= $titre_annonce;
+    }
+
+    public function getcontenu()
+    {
+        return $this->$contenu;
+    }
+
+    public function setcontenu($contenu)
+    {
+        $this->contenu = $contenu;
+    }
+
+    public function getdate_en_ligne()
+    {
+        return $this->date_en_ligne;
+    }
+
+    public function setdateenligne($date_en_ligne)
+    {
+        $this->prenom = $date_en_ligne;
+    }
+    public function getUtilisateur()
+    {
+        return $this->Utilisateur;
+    }
+
+    public function setUtilisateur($Utilisateur)
+    {
+        $this->Utilisateur = $Utilisateur;
+    }
+
+   
 
 }
 

@@ -27,7 +27,7 @@ class discusion
      /**
      * @var /Text
      *
-     * @ORM\Column(name="Contenu", type="text")
+     * @ORM\Column(name="detail", type="text")
      */
     private $detail;
     

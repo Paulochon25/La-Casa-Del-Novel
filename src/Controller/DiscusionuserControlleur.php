@@ -3,7 +3,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Entity\Discusion;
 
-class Discusion extends AbstractController
+class Discusion_user extends AbstractController
 {
     public function findAllsujetdiscusion(int $id): array
     {
@@ -32,9 +32,10 @@ class Discusion extends AbstractController
         $conn = $this->getEntityManager()->getConnection();
         $entityManager=$this->getDoctrine()->getManager();
 $discusion3=showdiscusion($discusion.id);
+$date23=date();
 $user3=showuser(1);
 $discusionuser=new discussion_user();
-        $discusionuser->setDiscusion($data[$discusion3]);
+        $discusionuser->setDiscusion($data[$discusion3])->getdata();
         $discusion1->setuser(user3);
         $discusion1->setAuthor($data['author']);
         $discusion->setDate_creation(date23);
@@ -51,9 +52,9 @@ $discusionuser=new discussion_user();
     {
  $entityManager = $this->getEntityManager();
 
- $discusion = $this->getDoctrine()->getRepository(discussion_user::class);
+ $discusionu = $this->getDoctrine()->getRepository(discussion_user::class);
 
-return $this->render('Discusion/discusionuser.html.twig', [
-    'controller_name' => 'ArticlesController',
+return $this->render('Discusion/detaildiscusion.html.twig', [
+    'controller_name' => 'Discusion_userController',
 ]);
 }
