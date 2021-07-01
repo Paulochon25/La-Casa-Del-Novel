@@ -5,8 +5,11 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,11 +30,13 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
+                'label' => 'Accepter la politique de confidentialité'
             ])
             ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
+                'type' => PasswordType::class,
                 'attr' => ['autocomplete' => 'new-password'],
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répétez le mot de passe'],
@@ -60,6 +65,34 @@ class RegistrationFormType extends AbstractType
                         'max' => 50,
                     ]),
                 ],
+            ])
+            ->add('birthdate', DateType::class, [
+                'attr' => ['label' => 'Date de naissance'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Vous devez choisir une date de naissance'
+                    ])
+                ]
+            ])
+            ->add('presentation', TextareaType::class, [
+                'attr' => ['label' => 'Présentation'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Petite présentation de vous même'
+                    ]),
+                    new Length([
+                        'min' => 8,
+                        'minMessage' => '8 charactères minimum.',
+                        'max' => 532,
+                    ])
+                ]
+            ])
+            ->add('role', ChoiceType::class, [
+                'attr' => ['label' => 'Choisissez votre rôle'],
+                'choices' => [
+                    'Lecteur' => true,
+                    'Traducteur' => false
+                ]
             ])
         ;
     }
