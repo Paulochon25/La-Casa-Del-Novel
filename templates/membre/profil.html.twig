@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ parent() }}
+<section id="profil">
+    <p id="title-section-publication">MES INFORMATIONS</p>
+    <div class="divider-translator"></div>
+    <div id="profil-informations">
+            <p class="info-membre-bold">E-mail :</p>
+            <p class="info-membre">{{ app.user.email }}</p><br/>
+            <div class="divider-profile"></div>
+            <p class="info-membre-bold">Pseudo :</p>
+            <p class="info-membre">{{ app.user.pseudo }}</p><br/>
+            <div class="divider-profile"></div>
+            <p class="info-membre-bold">Date de naissance :</p>
+            <p class="info-membre">{{ app.user.birthdate|date('d/m/Y') }}</p><br/>
+            <div class="divider-profile"></div>
+            <p class="info-membre-bold">Présentation :</p><br/>
+            <p class="info-membre">{{ app.user.presentation }}</p>
+
+    </div>
+</section>
+<style>
+    #block {
+        height: 80% !important;
+    }
+</style>
+{% endblock %}
