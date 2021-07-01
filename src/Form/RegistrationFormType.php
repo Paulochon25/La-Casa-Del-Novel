@@ -67,12 +67,9 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('birthdate', DateType::class, [
-                'attr' => ['label' => 'Date de naissance'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Vous devez choisir une date de naissance'
-                    ])
-                ]
+                'years' => range(date('Y'), date('Y')-50),
+                'format' => ('d M y'),
+
             ])
             ->add('presentation', TextareaType::class, [
                 'attr' => ['label' => 'Présentation'],
@@ -87,11 +84,17 @@ class RegistrationFormType extends AbstractType
                     ])
                 ]
             ])
-            ->add('role', ChoiceType::class, [
-                'attr' => ['label' => 'Choisissez votre rôle'],
-                'choices' => [
-                    'Lecteur' => true,
-                    'Traducteur' => false
+            ->add('role', TextType::class, [
+                'attr' => ['label' => 'Choisissez votre rôle', 'placeholder' => 'Membre / Traducteur'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Vous devez choisir un rôle'
+                    ]),
+                    new Length([
+                        'min' => 8,
+                        'minMessage' => 'Membre est le rôle par défaut',
+                        'max' => 532,
+                    ])
                 ]
             ])
         ;

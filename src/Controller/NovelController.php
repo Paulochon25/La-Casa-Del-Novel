@@ -29,4 +29,13 @@ class NovelController extends AbstractController
     {
         return $this->render('forum.html.twig');
     }
+
+
+    /**
+     * @Route("/ajouter-chapitre", name="add_chapter")
+     */
+    public function addChapter(): Response
+    {
+        return $this->render('traductor/add_chapter.html.twig');
+    }
 }

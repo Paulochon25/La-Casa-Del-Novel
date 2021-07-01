@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div id="form-add-novel">
+        <p id="title-add-novel">Ajouter un Novel</p>
+        <div id="divided-novel"></div>
+        <p id="description-add-novel">Les novels que vous souhaitez ajouter au site ne doivent pas provenir d'autres sites français, toute copie sera punie
+        d'un ban définitif.<br/>Pour le résumé un copie collé est autorisé ; c'est dans les post de chapitre que celui-ci est interdit.</p>
+    {{ form_start(addNovelForm) }}
+        {% if alert != "" %}
+            <div id="alert-novel-added">{{ alert }}</div>
+        {% endif %}
+        <div class="mb-3">
+            {{ form_widget(addNovelForm.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom du Novel'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(addNovelForm.length, {'attr': {'class': 'form-control', 'placeholder': 'Nombre de chapitres'},'type': 'number'}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(addNovelForm.resume, {'attr': {'class': 'form-control', 'placeholder': 'Résumé du novel'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(addNovelForm.note, {'attr': {'class': 'form-control', 'placeholder': 'Note'},'type': 'number'}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_widget(addNovelForm.statut, {'attr': {'class': 'form-control', 'placeholder': 'Statut du Ln'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary max-width">Ajout du Novel</button>
+        <style>#block{height: 50% !important;}</style>
+    {{ form_end(addNovelForm) }}
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+{% endblock %}

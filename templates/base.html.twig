@@ -21,12 +21,23 @@
 
         </section>
     {% else %}
+
         <section id="block">
             <section id="header">
                 <a href="{{ path('LN') }}" class="menu-title">Novels</a>
                 {#                    <a href="#" class="menu-title">Suggestions</a> FORUM #}
                 <a href="{{ path('translators') }}" class="menu-title">Traducteurs</a>
-                <a href="{{ path('forum') }}" class="menu-title mar-right" style="margin-right: 60%;">Forum</a>
+                <a href="{{ path('forum') }}" class="menu-title">Forum</a>
+                {% if app.user.role == "traducteur" %}
+                    <a href="{{ path('add_novel') }}" class="menu-title">Ajouter un Novel</a>
+                    <a href="{{ path('add_chapter') }}" class="menu-title mar-right">Ajouter un chapitre</a>
+                {% endif %}
+                {% if app.user.role == "administrateur" %}
+                    <a href="{{ path('add_novel') }}" class="menu-title">Ajouter un Novel</a>
+                    <a href="{{ path('add_chapter') }}" class="menu-title mar-right">Ajouter un chapitre</a>
+                    <a href="#" class="menu-title mar-right">Editer les données</a>
+
+                {% endif %}
                 <a href="{{ path('profil') }}" class="menu-title">{{ app.user.pseudo }}</a>
                 <a href="{{ path('app_logout') }}" class="logout-button">| Log Out</a>
 
